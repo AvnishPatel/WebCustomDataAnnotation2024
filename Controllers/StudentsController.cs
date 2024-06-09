@@ -6,19 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using WebCustomDataAnnotation2024.Data;
 using WebCustomDataAnnotation2024.Models;
 
 namespace WebCustomDataAnnotation2024.Controllers
 {
     public class StudentsController : Controller
     {
-        private WebCustomDataAnnotation2024Context db = new WebCustomDataAnnotation2024Context();
 
         // GET: Students
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            List<Student> students = new List<Student>();
+            return View(students);
         }
 
 
@@ -37,8 +36,8 @@ namespace WebCustomDataAnnotation2024.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Students.Add(student);
-                db.SaveChanges();
+                //db.Students.Add(student);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -53,7 +52,7 @@ namespace WebCustomDataAnnotation2024.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }
